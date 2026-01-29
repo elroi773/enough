@@ -1,10 +1,32 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+// main.jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import App from "./App";
+import Login from "./Login/login";
+import Join from "./Join/join";
+import Today from "./pages/today";
+import Mypray from "./pages/Mypray";
+import PostDetail from "./pages/PostDetail";
+
+const clientId =
+  "425674337430-rgh226rdlre6qpeb1ojtleb0bufi26go.apps.googleusercontent.com";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <GoogleOAuthProvider clientId={clientId}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<App />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/today" element={<Today />} />
+          <Route path="/mypray" element={<Mypray />} />
+          <Route path="/post/:id" element={<PostDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </GoogleOAuthProvider>
+  </React.StrictMode>
+);
