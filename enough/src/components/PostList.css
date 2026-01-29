@@ -1,0 +1,24 @@
+.post-list {
+  display: grid;
+  gap: 24px;
+  padding: 32px;
+  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* 모바일 (최대 768px)에서 1열 또는 2열로 */
+@media (max-width: 768px) {
+  .post-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 16px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .post-list > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 280px;
+  }
+}
