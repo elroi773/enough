@@ -1,0 +1,53 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./MyRecords.css";
+
+import MyRecord1 from "./img/MyRecord1.png";
+import MyRecord2 from "./img/MyRecord2.png";
+import MyRecord3 from "./img/MyRecord3.png";
+
+const records = [
+  { id: "prayer", title: "Prayer topic", subtitle: "나의 기도제목", img: MyRecord1 },
+  { id: "bible", title: "Today's Bible", subtitle: "오늘의 성경말씀", img: MyRecord2 },
+  { id: "contempla", title: "Contemplation", subtitle: "묵상 기록", img: MyRecord3 },
+];
+
+export default function MyRecords() {
+  return (
+    <div className="recordsWrapper">
+      <section className="recordsGrid">
+        {records.map((record) => (
+          <Card key={record.id} {...record} />
+        ))}
+      </section>
+    </div>
+  );
+}
+
+function Card({ id, title, subtitle, img }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (id === "bible") {
+      navigate("/today"); // ✅ 오늘의 성경말씀 클릭 시 이동
+    } else if (id === "prayer"){
+      navigate("/mypray");
+    } else{
+      navigate("/mycomtemplation");
+    }
+  };
+
+  return (
+    <article
+      id={id}
+      className="card"
+      style={{ backgroundImage: `url(${img})` }}
+      onClick={handleClick}
+    >
+      <div className="MycardContent">
+        <h2>{title}</h2>
+        <p>{subtitle}</p>
+      </div>
+    </article>
+  );
+}
