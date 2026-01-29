@@ -1,0 +1,176 @@
+.recordsWrapper {
+  padding: 32px 16px;
+  min-height: 100vh;
+  font-family: "Pretendard-Regular";
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.recordsGrid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* 카드 공통 스타일 */
+.card {
+  width: 260px;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+
+  /* 배경 이미지를 카드에 꽉 채우기 */
+  background-size: cover; /* 비율 유지하며 꽉 채움 */
+  background-position: center; /* 가운데 정렬 */
+  background-repeat: no-repeat; /* 반복 제거 */
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* 데스크톱 배경 이미지 - public 폴더 기준 절대 경로 */
+#prayer {
+  background-image: url("./img/MyRecord1.png");
+}
+
+#bible {
+  background-image: url("./img/MyRecord2.png");
+}
+
+#contempla {
+  background-image: url("./img/MyRecord3.png");
+}
+
+/* 오버레이(필터) */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+/* 카드 안 텍스트 - 더 구체적인 선택자 사용 */
+.recordsWrapper .MycardContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff !important;
+  text-align: center;
+  z-index: 2;
+  padding: 16px;
+  /* App.css 그라데이션 효과 무력화 */
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #fff !important;
+  background-clip: initial !important;
+}
+
+.recordsWrapper .MycardContent h2 {
+  color: #fff !important;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  /* App.css 그라데이션 효과 무력화 */
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #fff !important;
+  background-clip: initial !important;
+  text-shadow: none !important;
+}
+
+.recordsWrapper .MycardContent p {
+  color: #fff !important;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  /* App.css 그라데이션 효과 무력화 */
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #fff !important;
+  background-clip: initial !important;
+}
+
+/* 📱 모바일 대응 - 올바른 비율 */
+@media (max-width: 899px) {
+  .recordsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "prayer bible"
+      "prayer contem";
+    gap: 16px;
+    max-width: 100%;
+    padding: 0 16px;
+    height: 400px; /* 전체 높이 고정 */
+  }
+
+  #prayer {
+    grid-area: prayer;
+    /* aspect-ratio 제거하고 grid로 크기 조정 */
+    background-image: url("./img/MyRecord_Mobile1.png") !important;
+  }
+
+  #bible {
+    grid-area: bible;
+    /* aspect-ratio 제거하고 grid로 크기 조정 */
+    background-image: url("./img/MyRecord_Mobile2.png") !important;
+  }
+
+  #contempla {
+    grid-area: contem;
+    /* aspect-ratio 제거하고 grid로 크기 조정 */
+    background-image: url("./img/MyRecord_Mobile3.png") !important;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%; /* grid 셀을 가득 채우도록 */
+    max-width: none;
+  }
+
+  .recordsWrapper .cardContent h2 {
+    font-size: 1.3rem;
+  }
+
+  .recordsWrapper .cardContent p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .recordsWrapper {
+    padding: 16px 12px;
+  }
+
+  .recordsGrid {
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .recordsWrapper .cardContent h2 {
+    font-size: 0.8rem;
+  }
+
+  .recordsWrapper .cardContent p {
+    font-size: 0.8rem;
+  }
+}
