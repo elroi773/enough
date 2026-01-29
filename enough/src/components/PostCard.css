@@ -1,0 +1,50 @@
+.post-card {
+  will-change: transform;
+  width: 300px;
+  background-color: #353233;
+  border-radius: 16px;
+  padding: 16px;
+  font-family: sans-serif;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 16px auto;
+  color: #FFFFFF; /* 기본 글자색 흰색으로 */
+  text-align: left;
+}
+
+.category {
+  display: inline-block;
+  background-color: #d3d3d3;
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 9999px;
+  margin-bottom: 8px;
+  color: #000000; /* 카테고리 텍스트는 검은색 */
+}
+
+.nickname {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0;
+  color: #FFFFFF; /* 닉네임 흰색 */
+}
+
+.content {
+  font-size: 14px;
+  color: #EEEEEE; /* 본문 밝은 회색 */
+  margin: 12px 0;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #BBBBBB; /* 아이콘 색상 밝게 */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 프로필과 제목 간격 */
+}
