@@ -3,7 +3,8 @@
 
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = ''
-const supabaseKey = ''
+// Vite env vars (set these in .env.local as VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY)
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseKey)  // 여기 변수명을 맞춰주세요!
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
