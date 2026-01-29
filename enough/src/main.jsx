@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import App from "./App";
-import Login from "./Login/login";
-import Join from "./Join/join";
+import Login from "./pages/Login/Login";
+import Join from "./pages/Join/Join";
 import Today from "./pages/today";
 import Mypray from "./pages/Mypray";
 import PostDetail from "./pages/PostDetail";
