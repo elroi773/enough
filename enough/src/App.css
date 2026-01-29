@@ -1,42 +1,245 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --gap: 24px;
+  --radius: 20px;
+  --overlay: rgba(138, 43, 226, 0.45); /* 보라색 오버레이 */
+  --primary-purple: #8a2be2; /* 메인 보라색 */
+  --accent-pink: #ff1493; /* 메인 분홍색 */
+  --light-purple: #dda0dd; /* 연한 보라색 */
+  --light-pink: #ffb6c1; /* 연한 분홍색 */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Pretendard-Regular";
+}
+
+
+/* ===== Header / Top 영역 ===== */
+.Top {
+  position: relative;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid var(--light-purple);
+}
+
+.Top img {
+  width: 200px;
+  margin: 20px 0 0 5px;
+  filter: drop-shadow(2px 2px 4px rgba(138, 43, 226, 0.3));
+}
+
+.Top p {
   text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--primary-purple);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.Top #chapter {
+  font-size: 13px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: var(--accent-pink);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+h1{
+  margin-top: 15px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.menu a {
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--primary-purple);
+  transition: 0.3s ease-in-out;
+  margin: 0 6px;
+  font-weight: 500;
+}
+
+.menu a:hover {
+  color: #e9789c;
+  transform: translateY(-1px);
+}
+
+.menu-button {
+  background: #f8f4ff;
+  color: #8a2be2;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
+  font-weight: 600;
+}
+
+.menu-button:hover {
+  background: #f2dce0;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 20, 145, 0.139);
+}
+
+.menu-button:active {
+  transform: scale(0.98);
+}
+
+/* ===== 타이틀 ===== */
+.prayTitle {
+  padding: 50px 0 0 30px;
+}
+
+.prayTitle h2 {
+  font-size: 30px;
+  font-weight: 700;
+  /* text-shadow: 2px 2px 4px rgba(138, 43, 226, 0.2); */
+  -webkit-background-clip: text;
+  /* -webkit-text-fill-color: transparent; */
+  background: linear-gradient(90deg, var(--primary-purple), var(--accent-pink));
+  background-clip: text;
+}
+
+/* ===== 카드 레이아웃 ===== */
+.records-wrapper {
+  padding: 32px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.records-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
 }
 
 .card {
-  padding: 2em;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4; /* 카드 비율 유지 (260x~400 비슷하게) */
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--overlay);
+}
+
+.card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+}
+
+.card-content h2 {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.card-content p {
+  color: #fff;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.Cards {
+  display: flex;
+  flex-direction: column;
+  gap: 100px; /*  컴포넌트 간 간격 */
+}
+
+/* ===== Grid Area 지정 ===== */
+#prayer {
+  grid-area: prayer;
+}
+
+#bible {
+  grid-area: bible;
+}
+
+#contempla {
+  grid-area: contem;
+}
+
+/* ===== 반응형 (768px 이하) ===== */
+@media (max-width: 768px) {
+  .Top img {
+    width: 160px;
+    margin: 10px 0 0 1px;
+  }
+  .menu {
+    top: 25px;
+    right: 15px;
+    margin-right: 5px;
+    gap: 8px;
+  }
+
+  .menu a {
+    font-size: 13px;
+  }
+
+  .Top p {
+    font-size: 15px;
+    padding: 0 15px;
+  }
+
+  .Top #chapter {
+    font-size: 12px;
+    margin-bottom: 30px;
+  }
+
+  .prayTitle {
+    padding: 30px 20px 0;
+  }
+
+  .prayTitle h2 {
+    font-size: 20px;
+  }
+  .records-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+  }
 }
