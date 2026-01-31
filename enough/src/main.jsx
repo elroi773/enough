@@ -11,6 +11,8 @@ import Today from "./pages/today";
 import Mypray from "./pages/Mypray";
 import PostDetail from "./pages/PostDetail";
 
+import Intro2 from "./pages/Intro2";
+
 const clientId =
   "425674337430-rgh226rdlre6qpeb1ojtleb0bufi26go.apps.googleusercontent.com";
 
@@ -25,6 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/today" element={<Today />} />
           <Route path="/mypray" element={<Mypray />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/intro" element={<Intro2 />}/>
         </Routes>
       </BrowserRouter>
     </GoogleOAuthProvider>
